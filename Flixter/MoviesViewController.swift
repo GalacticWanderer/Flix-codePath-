@@ -18,6 +18,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     //holds a list of Movie DataModel objects
     var movieArray: [MovieModel] = [MovieModel]()
     
+    
     var movies = [[String:Any]]()
     
     //outlet for the tableView
@@ -32,6 +33,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         //downloading data with the help of pods, alternative to the tutorial
         getDataWithPods()
+        
+        //TODO set up constraints for the cells so that it can be optimized for all screens
     }
     
     // MARK: - data source and delegate methods for the tableview

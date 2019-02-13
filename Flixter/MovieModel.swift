@@ -13,6 +13,7 @@ class MovieModel{
     var overview: String
     var image_URL : URL
     
+    //whoever calls MovieModel, has to provide values for the vars
     init(title : String, overview : String, image_URL : URL) {
         self.title = title
         self.overview = overview
