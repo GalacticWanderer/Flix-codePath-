@@ -34,7 +34,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         //downloading data with the help of pods, alternative to the tutorial
         getDataWithPods()
         
-        //TODO set up constraints for the cells so that it can be optimized for all screens
+       //tableView.rowHeight = 200
+
     }
     
     // MARK: - data source and delegate methods for the tableview
@@ -52,7 +53,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.img_poster.af_setImage(withURL: movieArray[indexPath.row].image_URL)
         return cell
     }
-    
     
     // MARK: - downloading JSON. (Easy serialization, the Alamofire X SwiftyJSON way)
     func getDataWithPods(){

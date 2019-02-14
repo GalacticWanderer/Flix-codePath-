@@ -12,7 +12,7 @@ class MovieCell: UITableViewCell {
 
     //outlets for the cell
     @IBOutlet weak var img_poster: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
-
+    @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet weak var overviewLabel: UITextField!
+    
 }
