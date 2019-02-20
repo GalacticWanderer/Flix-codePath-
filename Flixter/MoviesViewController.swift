@@ -62,15 +62,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 for x in 0...resultCount-1{
                     let movies = JSON(response.result.value!)["results"][x]
-                    
                     let title = movies["title"].stringValue
                     let overview = movies["overview"].stringValue
                     let posterURL = movies["poster_path"].stringValue
+                    let backdropURL = movies["backdrop_path"].stringValue
                     
                     let imageURL = URL(string: "https://image.tmdb.org/t/p/w185" + posterURL)
+                    let backdropImageURL = URL(string: "https://image.tmdb.org/t/p/w1280" + backdropURL)
                     
                     //appending to movieArray
-                    let data = MovieModel(title: title, overview: overview, image_URL: imageURL!)
+                    let data = MovieModel(title: title, overview: overview, image_URL: imageURL!, backdrop_URL: backdropImageURL!)
                     self.movieArray.append(data)
                     
                     //reload tableView
@@ -88,6 +89,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //find the selected cell
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        
+        let movie = movieArray[indexPath!.row]
+        
+        //pass the selected cell
+        let detailVC = segue.destination  as! MovieDetailsViewController
+        detailVC.movieTitle = movie.title
+        detailVC.synopsisText = movie.overview
+        detailVC.backdropURL = movie.backdrop_URL
+        detailVC.posterURL = movie.image_URL
+    }
+    
+    
+    
+    
     
     // MARK : Tutorial's method of downloading JSON. Using URLSession and URLRequest to make a get request to API and gets a response back
     func tutorialGetData(){
