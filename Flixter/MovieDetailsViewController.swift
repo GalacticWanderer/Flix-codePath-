@@ -11,11 +11,13 @@ import AlamofireImage
 
 class MovieDetailsViewController: UIViewController {
 
+    //vars to help data pass over
     var movieTitle: String!
     var synopsisText: String!
     var backdropURL: URL!
     var posterURL: URL!
     
+    //the IBOutlet collection
     @IBOutlet weak private var backdropImage: UIImageView!
     @IBOutlet weak private var posterImage: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
@@ -26,6 +28,11 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         debugPrint("passed over movie -> \(movieTitle as String)")
         
+        setUpIBOutlets()
+    }
+    
+    //sets up the outlets with values
+    func setUpIBOutlets(){
         titleLabel.text = movieTitle
         titleLabel.sizeToFit()
         

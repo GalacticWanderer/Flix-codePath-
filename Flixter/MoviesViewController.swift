@@ -43,6 +43,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return movieArray.count
     }
     
+    //configures tableView cell and returns it
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
@@ -54,6 +55,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    //configure behavior when a tableView cell is selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: - downloading JSON. (Easy serialization, the Alamofire X SwiftyJSON way)
     func getDataWithPods(){
         Alamofire.request(API_URL, method: .get).responseJSON { (response) in
@@ -62,6 +68,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 for x in 0...resultCount-1{
                     let movies = JSON(response.result.value!)["results"][x]
+                    
                     let title = movies["title"].stringValue
                     let overview = movies["overview"].stringValue
                     let posterURL = movies["poster_path"].stringValue
@@ -90,6 +97,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    //triggers right before travels to the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //find the selected cell
         let cell = sender as! UITableViewCell
