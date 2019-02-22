@@ -8,6 +8,13 @@
 
 import Foundation
 
+//model for the gridView cell
 class SuperheroMovieModel{
+    
+    var poster_URL: URL
+    
+    init(poster_URL: URL) {
+        self.poster_URL = poster_URL
+    }
     
 }
