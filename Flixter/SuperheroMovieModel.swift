@@ -12,9 +12,15 @@ import Foundation
 class SuperheroMovieModel{
     
     var poster_URL: URL
+    var movie_title: String
+    var movie_overview: String
+    var movie_backdrop: URL
     
-    init(poster_URL: URL) {
+    init(poster_URL: URL, movie_title: String, movie_overview: String, movie_backdrop: URL) {
         self.poster_URL = poster_URL
+        self.movie_title = movie_title
+        self.movie_overview = movie_overview
+        self.movie_backdrop = movie_backdrop
     }
     
 }

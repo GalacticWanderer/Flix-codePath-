@@ -60,6 +60,20 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //find the selected cell
+        let gridViewItem = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: gridViewItem)
+        
+        let superheroMovie = superheroMovieArray[(indexPath?.item)!]
+        
+        let destinationVC = segue.destination as! SuperheroDetailsViewController
+        
+        destinationVC.backdropURL = superheroMovie.movie_backdrop
+        destinationVC.posterURL = superheroMovie.poster_URL
+        destinationVC.movieTitle = superheroMovie.movie_title
+        destinationVC.synopsisText = superheroMovie.movie_overview
+    }
  
     //func to download JSON from api
     func getDataWithPods(){
@@ -70,10 +84,17 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
                 for x in 0...resultCount-1{
                     print(JSON(response.result.value!)["results"][x]["title"])
                     
-                    let movie = JSON(response.result.value!)["results"][x]["poster_path"].stringValue
-                    let url = URL(string:"https://image.tmdb.org/t/p/w185"+movie)
+                    let movie = JSON(response.result.value!)["results"][x]
                     
-                    let data = SuperheroMovieModel(poster_URL: url!)
+                    let title = movie["title"].stringValue
+                    let overview = movie["overview"].stringValue
+                    let posterURL = movie["poster_path"].stringValue
+                    let backdropURL = movie["backdrop_path"].stringValue
+                    
+                    let poster_url = URL(string:"https://image.tmdb.org/t/p/w185"+posterURL)
+                    let backdrop_url = URL(string:"https://image.tmdb.org/t/p/w1280"+backdropURL)
+                    
+                    let data = SuperheroMovieModel(poster_URL: poster_url!, movie_title: title, movie_overview: overview, movie_backdrop: backdrop_url!)
                     
                     self.superheroMovieArray.append(data)
                     self.collectionView.reloadData()
