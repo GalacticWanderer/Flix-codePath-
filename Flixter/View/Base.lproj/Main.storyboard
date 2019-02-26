@@ -125,7 +125,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UkL-eh-q75" firstAttribute="trailing" secondItem="3MF-cu-rrg" secondAttribute="trailing" constant="20" id="7NG-bz-pOp"/>
                             <constraint firstItem="hSN-aZ-r3S" firstAttribute="trailing" secondItem="UkL-eh-q75" secondAttribute="trailing" id="CGc-q3-C5l"/>
@@ -165,26 +165,33 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="221"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpR-m7-wdE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpR-m7-wdE">
                                 <rect key="frame" x="20" y="223" width="125" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wgo-Ff-j4H" appends="YES" id="1of-BH-7Pk"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tow-gB-TmW">
                                 <rect key="frame" x="153" y="317" width="241" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xho-ZT-EB6">
                                 <rect key="frame" x="0.0" y="402" width="414" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+                        </accessibility>
                         <viewLayoutGuide key="safeArea" id="kcZ-R1-4qK"/>
                     </view>
                     <connections>
@@ -192,11 +199,51 @@
                         <outlet property="overviewLabel" destination="Xho-ZT-EB6" id="s4T-h9-fB7"/>
                         <outlet property="posterImage" destination="FpR-m7-wdE" id="mIm-YW-xO0"/>
                         <outlet property="titleLabel" destination="Tow-gB-TmW" id="uSA-cI-ITi"/>
+                        <segue destination="zif-2o-89Y" kind="show" identifier="WebViewController" id="ygd-zP-CwW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LmA-DT-5N0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wgo-Ff-j4H">
+                    <connections>
+                        <action selector="tapGesture:" destination="xnB-Fb-dFQ" id="wVK-8x-9VP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1008.6956521739131" y="1417.6339285714284"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="n3A-ka-reL">
+            <objects>
+                <viewController id="zif-2o-89Y" customClass="WebViewController" customModule="Flixter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qc1-Ke-7zY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pq-HG-3eC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5pq-HG-3eC" firstAttribute="trailing" secondItem="e86-DA-ada" secondAttribute="trailing" id="2L1-wS-BPu"/>
+                            <constraint firstItem="5pq-HG-3eC" firstAttribute="top" secondItem="e86-DA-ada" secondAttribute="top" id="fSx-Nz-F3h"/>
+                            <constraint firstItem="5pq-HG-3eC" firstAttribute="leading" secondItem="e86-DA-ada" secondAttribute="leading" id="gMj-qc-Sqi"/>
+                            <constraint firstItem="5pq-HG-3eC" firstAttribute="bottom" secondItem="e86-DA-ada" secondAttribute="bottom" id="yI8-sB-8So"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e86-DA-ada"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="5pq-HG-3eC" id="hA8-O6-y3x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCA-OH-wRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008.6956521739131" y="2154.9107142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PvH-Kr-Eoj">

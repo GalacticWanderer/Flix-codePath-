@@ -73,6 +73,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
         destinationVC.posterURL = superheroMovie.poster_URL
         destinationVC.movieTitle = superheroMovie.movie_title
         destinationVC.synopsisText = superheroMovie.movie_overview
+        destinationVC.id = superheroMovie.movie_id
     }
  
     //func to download JSON from api
@@ -90,11 +91,12 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
                     let overview = movie["overview"].stringValue
                     let posterURL = movie["poster_path"].stringValue
                     let backdropURL = movie["backdrop_path"].stringValue
+                    let id = movie["id"].stringValue
                     
                     let poster_url = URL(string:"https://image.tmdb.org/t/p/w185"+posterURL)
                     let backdrop_url = URL(string:"https://image.tmdb.org/t/p/w1280"+backdropURL)
                     
-                    let data = SuperheroMovieModel(poster_URL: poster_url!, movie_title: title, movie_overview: overview, movie_backdrop: backdrop_url!)
+                    let data = SuperheroMovieModel(poster_URL: poster_url!, movie_title: title, movie_overview: overview, movie_backdrop: backdrop_url!, movie_id: id)
                     
                     self.superheroMovieArray.append(data)
                     self.collectionView.reloadData()

@@ -43,5 +43,4 @@ class MovieDetailsViewController: UIViewController {
         synopsisLabel.sizeToFit()
     }
 
-
 }
