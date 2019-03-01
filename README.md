@@ -33,7 +33,7 @@ Here's a walkthrough of implemented user stories:
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Auto-layout needs a lot of practice.
 
 ## Flix Part 2
 
