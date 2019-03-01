@@ -34,7 +34,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         //downloading data with the help of pods, alternative to the tutorial
         getDataWithPods()
         
-       //tableView.rowHeight = 200
+        //for automatic cell resizing
+        //and the bottom constraints for view elements has to be >=
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
+
+        
+        tableView.backgroundColor = .red
 
     }
     
