@@ -2,6 +2,39 @@
 
 Flix is an app that allows users to browse movies from the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
+# Lab 3 - *FLIX*
+
+Time spent: **10** hours spent in total
+
+## User Stories
+
+The following **required** user stories are complete:
+
+The following screens use AutoLayout to adapt to various orientations and screen sizes
+   - [x] Movie feed view (+3pt)
+   - [x] Detail view (+2pt)
+
+The following **stretch** user stories are implemented:
+- [x] Dynamic Height Cells (+1)
+- [x] Collection View AutoLayout (+2)
+
+The following **additional** user stories are yet to be implemented:
+- [ ] Dynamic colors for the cells using Chameleon Framework
+
+Things I would like to discuss with my peers.
+
+- Ways to make auto-layout easier to understand and implement
+
+## Gif Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+![Alt Text](https://media.giphy.com/media/9VzeXsmh1EvGeRGlvg/giphy.gif)
+
+## Notes
+
+Describe any challenges encountered while building the app.
+
 ## Flix Part 2
 
 ### User Stories
